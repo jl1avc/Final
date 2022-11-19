@@ -101,3 +101,50 @@ class Shelf():
                 print('No genre :', value)
             else:
                 pass
+            
+            
+            
+    def guiGet(self, i):
+        bookString = self.bookList1[i].title + '  |  ' + self.bookList1[i].author + '  |  '+\
+            self.bookList1[i].lentgh + '  |  '+ self.bookList1[i].genre + '  |  '+\
+            self.bookList1[i].series
+        return bookString
+    
+    def guiRemove(self, userInput1):        
+        self.bookList1.remove(self.bookList1[userInput1])
+        
+    def guiListGenres(self):
+        genreDict  = {}
+        genresCount1 = []
+        
+        for i in range(len(self.bookList1)):
+            genresCount1.append(0)
+            
+        for i in range(len(self.bookList1)):
+            for j in range(len(self.bookList1)):
+                if self.bookList1[i].genre == self.bookList1[j].genre:
+                    genresCount1[i] += 1
+                    genreDict[self.bookList1[i].genre] = genresCount1[i]
+        txt = 'Genres: |'
+        for key, value in genreDict.items():
+            if key != '':
+                #print(key, ':', value)
+                
+                txt = txt + key 
+                txt = txt + ' : '
+                txt = txt + str(value) + '  |  '
+                
+            elif key == '':
+                #print('No genre :', value)
+                txt = txt + 'No genre :' 
+                txt = txt + str(value) + '  |  '
+            else:
+                pass
+            
+        return txt
+            
+            
+            
+            
+            
+            
